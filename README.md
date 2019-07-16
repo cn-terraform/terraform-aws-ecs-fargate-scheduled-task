@@ -10,7 +10,7 @@ Check versions for this module on:
 * Github Releases: <https://github.com/jnonino/terraform-aws-ecs-fargate-scheduled-task/releases>
 * Terraform Module Registry: <https://registry.terraform.io/modules/jnonino/ecs-fargate-scheduled-task/aws>
 
-        module "td" {
+        module "scheduled_task" {
     	    source          = "jnonino/ecs-fargate-scheduled-task/aws"
             version         = "1.0.0"
             name_preffix    = var.name_preffix
