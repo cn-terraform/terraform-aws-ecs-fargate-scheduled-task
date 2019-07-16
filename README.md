@@ -53,6 +53,16 @@ Check the section "Other modules that you may need to use this module" for detai
 
 ## Output values
 
+* scheduled_task_cw_event_role_arn: The Amazon Resource Name (ARN) specifying the role.
+* scheduled_task_cw_event_role_create_date: The creation date of the IAM role.
+* scheduled_task_cw_event_role_description: The description of the role.
+* scheduled_task_cw_event_role_id: The name of the role.
+* scheduled_task_cw_event_role_name: The name of the role.
+* scheduled_task_cw_event_role_unique_id: The stable and unique string identifying the role.
+* aws_iam_role_policy_scheduled_task_cw_event_role_cloudwatch_policy_id: The role policy ID, in the form of role_name:role_policy_name.
+* aws_iam_role_policy_scheduled_task_cw_event_role_cloudwatch_policy_name: The name of the policy.
+* aws_iam_role_policy_scheduled_task_cw_event_role_cloudwatch_policy_policy: The policy document attached to the role.
+* aws_iam_role_policy_scheduled_task_cw_event_role_cloudwatch_policy_role: The name of the role associated with the policy.
 * aws_cloudwatch_event_rule_event_rule_arn: The Amazon Resource Name (ARN) of the CloudWatch Event Rule.
 
 ## Other modules that you may need to use this module
@@ -60,7 +70,7 @@ Check the section "Other modules that you may need to use this module" for detai
 The networking module should look like this:
 
         module "networking" {
-    		source          = "jnonino/networking/aws"
+    	    source          = "jnonino/networking/aws"
             version         = "2.0.3"
             name_preffix    = var.name_preffix
             profile         = var.profile
@@ -78,11 +88,11 @@ Check versions for this module on:
 The ECS cluster module should look like this:
 
         module "ecs-cluster": 
-            source              = "jnonino/ecs-cluster/aws"
-            version             = "1.0.0"
-            name_preffix        = var.name_preffix
-            profile             = var.profile
-            region              = var.region
+            source       = "jnonino/ecs-cluster/aws"
+            version      = "1.0.0"
+            name_preffix = var.name_preffix
+            profile      = var.profile
+            region       = var.region
         }
 
 Check versions for this module on:
