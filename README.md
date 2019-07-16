@@ -70,7 +70,7 @@ Check the section "Other modules that you may need to use this module" for detai
 The networking module should look like this:
 
         module "networking" {
-    	    source          = "jnonino/networking/aws"
+            source          = "jnonino/networking/aws"
             version         = "2.0.3"
             name_preffix    = var.name_preffix
             profile         = var.profile
@@ -102,7 +102,7 @@ Check versions for this module on:
 The task definition module should like this:
 
         module "td" {
-    	    source          = "jnonino/ecs-fargate-task-definition/aws"
+            source          = "jnonino/ecs-fargate-task-definition/aws"
             version         = "1.0.0"
             name_preffix    = var.name_preffix
             profile         = var.profile
