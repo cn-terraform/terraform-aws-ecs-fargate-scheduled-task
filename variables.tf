@@ -23,21 +23,24 @@ variable "event_rule_name" {
   description = "The rule's name."
 }
 
-variable "event_rule_description" {
-  description = "(Optional) The description of the rule."
-}
-
 variable "event_rule_schedule_expression" {
   description = "(Required, if event_pattern isn't specified) The scheduling expression. For example, cron(0 20 * * ? *) or rate(5 minutes)."
+  default     = null
 }
 
 variable "event_rule_event_pattern" {
   description = "(Required, if schedule_expression isn't specified) Event pattern described a JSON object. See full documentation of CloudWatch Events and Event Patterns for details."
+  default     = null
+}
+
+variable "event_rule_description" {
+  description = "(Optional) The description of the rule."
+  default     = null
 }
 
 variable "event_rule_role_arn" {
   description = "(Optional) The Amazon Resource Name (ARN) associated with the role that is used for target invocation."
-  default     = ""
+  default     = null
 }
 
 variable "event_rule_is_enabled" {
@@ -53,28 +56,28 @@ variable "ecs_cluster_arn" {
   description = "The ECS Cluster where the scheduled task will run"
 }
 
-variable "event_target_target_id" {
-  description = "(Optional) The unique target assignment ID. If missing, will generate a random, unique id."
-  default     = ""
-}
-
-variable "event_target_input" {
-  description = "(Optional) Valid JSON text passed to the target."
-  default     = ""
-}
-
-variable "event_target_input_path" {
-  description = "(Optional) The value of the JSONPath that is used for extracting part of the matched event when passing it to the target."
-  default     = ""
+variable "event_target_ecs_target_subnets" {
+  description = "The subnets associated with the task or service."
+  type        = list
 }
 
 variable "event_target_ecs_target_task_definition_arn" {
   description = "(Required) The ARN of the task definition to use if the event target is an Amazon ECS cluster."
 }
 
-variable "event_target_ecs_target_subnets" {
-  description = "The subnets associated with the task or service."
-  type        = list
+variable "event_target_target_id" {
+  description = "(Optional) The unique target assignment ID. If missing, will generate a random, unique id."
+  default     = null
+}
+
+variable "event_target_input" {
+  description = "(Optional) Valid JSON text passed to the target."
+  default     = null
+}
+
+variable "event_target_input_path" {
+  description = "(Optional) The value of the JSONPath that is used for extracting part of the matched event when passing it to the target."
+  default     = null
 }
 
 variable "event_target_ecs_target_security_groups" {
@@ -102,10 +105,5 @@ variable "event_target_ecs_target_platform_version" {
 
 variable "event_target_ecs_target_group" {
   description = "(Optional) Specifies an ECS task group for the task. The maximum length is 255 characters."
-  default     = ""
+  default     = null
 }
-
-variable "ecs_execution_task_role_arn" {
-  description = "The task definition execution role"
-}
-

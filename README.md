@@ -34,11 +34,10 @@ Check the section "Other modules that you may need to use this module" for detai
 * region: AWS Region the infrastructure is hosted in.
 * ecs_cluster_arn: The ECS Cluster where the scheduled task will run.
 * event_rule_name: The rule's name.
-* ecs_execution_task_role_arn: The task definition execution role.
+* event_target_ecs_target_subnets: The subnets associated with the task or service.
+* event_target_ecs_target_task_definition_arn: The ARN of the task definition to use if the event target is an Amazon ECS cluster.
 * event_rule_schedule_expression: (Required, if event_pattern isn't specified) The scheduling expression. For example, cron(0 20 * * ? *) or rate(5 minutes).
 * event_rule_event_pattern: (Required, if schedule_expression isn't specified) Event pattern described a JSON object. See full documentation of CloudWatch Events and Event Patterns for details.
-* event_target_ecs_target_task_definition_arn: The ARN of the task definition to use if the event target is an Amazon ECS cluster.
-* event_target_ecs_target_subnets: The subnets associated with the task or service.
 * event_rule_description: (Optional) The description of the rule.
 * event_rule_role_arn: (Optional) The Amazon Resource Name (ARN) associated with the role that is used for target invocation.
 * event_rule_is_enabled: (Optional) Whether the rule should be enabled (defaults to true).
