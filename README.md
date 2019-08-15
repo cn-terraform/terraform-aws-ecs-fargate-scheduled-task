@@ -12,7 +12,7 @@ Check versions for this module on:
 
         module "scheduled_task" {
     	    source          = "jnonino/ecs-fargate-scheduled-task/aws"
-            version         = "1.0.0"
+            version         = "1.0.4"
             name_preffix    = var.name_preffix
             profile         = var.profile
             region          = var.region
