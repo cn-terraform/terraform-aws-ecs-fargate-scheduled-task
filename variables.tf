@@ -65,6 +65,10 @@ variable "event_target_ecs_target_task_definition_arn" {
   description = "(Required) The ARN of the task definition to use if the event target is an Amazon ECS cluster."
 }
 
+variable "ecs_execution_task_role_arn" {	
+  description = "(Required) The task definition execution role"	
+}
+
 variable "event_target_target_id" {
   description = "(Optional) The unique target assignment ID. If missing, will generate a random, unique id."
   default     = null
