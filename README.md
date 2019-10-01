@@ -2,22 +2,22 @@
 
 This Terraform module deploys an AWS ECS Fargate scheduled task service.
 
-[![CircleCI](https://circleci.com/gh/jnonino/terraform-aws-ecs-fargate-scheduled-task/tree/master.svg?style=svg)](https://circleci.com/gh/jnonino/terraform-aws-ecs-fargate-scheduled-task/tree/master)
-[![](https://img.shields.io/github/license/jnonino/terraform-aws-ecs-fargate-scheduled-task)](https://github.com/jnonino/terraform-aws-ecs-fargate-scheduled-task)
-[![](https://img.shields.io/github/issues/jnonino/terraform-aws-ecs-fargate-scheduled-task)](https://github.com/jnonino/terraform-aws-ecs-fargate-scheduled-task)
-[![](https://img.shields.io/github/issues-closed/jnonino/terraform-aws-ecs-fargate-scheduled-task)](https://github.com/jnonino/terraform-aws-ecs-fargate-scheduled-task)
-[![](https://img.shields.io/github/languages/code-size/jnonino/terraform-aws-ecs-fargate-scheduled-task)](https://github.com/jnonino/terraform-aws-ecs-fargate-scheduled-task)
-[![](https://img.shields.io/github/repo-size/jnonino/terraform-aws-ecs-fargate-scheduled-task)](https://github.com/jnonino/terraform-aws-ecs-fargate-scheduled-task)
+[![CircleCI](https://circleci.com/gh/cn-terraform/terraform-aws-ecs-fargate-scheduled-task/tree/master.svg?style=svg)](https://circleci.com/gh/cn-terraform/terraform-aws-ecs-fargate-scheduled-task/tree/master)
+[![](https://img.shields.io/github/license/cn-terraform/terraform-aws-ecs-fargate-scheduled-task)](https://github.com/cn-terraform/terraform-aws-ecs-fargate-scheduled-task)
+[![](https://img.shields.io/github/issues/cn-terraform/terraform-aws-ecs-fargate-scheduled-task)](https://github.com/cn-terraform/terraform-aws-ecs-fargate-scheduled-task)
+[![](https://img.shields.io/github/issues-closed/cn-terraform/terraform-aws-ecs-fargate-scheduled-task)](https://github.com/cn-terraform/terraform-aws-ecs-fargate-scheduled-task)
+[![](https://img.shields.io/github/languages/code-size/cn-terraform/terraform-aws-ecs-fargate-scheduled-task)](https://github.com/cn-terraform/terraform-aws-ecs-fargate-scheduled-task)
+[![](https://img.shields.io/github/repo-size/cn-terraform/terraform-aws-ecs-fargate-scheduled-task)](https://github.com/cn-terraform/terraform-aws-ecs-fargate-scheduled-task)
 
 ## Usage
 
 Check versions for this module on:
-* Github Releases: <https://github.com/jnonino/terraform-aws-ecs-fargate-scheduled-task/releases>
-* Terraform Module Registry: <https://registry.terraform.io/modules/jnonino/ecs-fargate-scheduled-task/aws>
+* Github Releases: <https://github.com/cn-terraform/terraform-aws-ecs-fargate-scheduled-task/releases>
+* Terraform Module Registry: <https://registry.terraform.io/modules/cn-terraform/ecs-fargate-scheduled-task/aws>
 
         module "scheduled_task" {
-    	    source          = "jnonino/ecs-fargate-scheduled-task/aws"
-            version         = "1.0.4"
+    	    source          = "cn-terraform/ecs-fargate-scheduled-task/aws"
+            version         = "1.0.5"
             name_preffix    = var.name_preffix
             profile         = var.profile
             region          = var.region
