@@ -3,11 +3,11 @@
 This Terraform module deploys an AWS ECS Fargate scheduled task service.
 
 [![CircleCI](https://circleci.com/gh/jnonino/terraform-aws-ecs-fargate-scheduled-task/tree/master.svg?style=svg)](https://circleci.com/gh/jnonino/terraform-aws-ecs-fargate-scheduled-task/tree/master)
-[![](https://img.shields.io/github/license/jnonino/terraform-aws-ci-cd-system)](https://github.com/jnonino/terraform-aws-ci-cd-system)
-[![](https://img.shields.io/github/issues/jnonino/terraform-aws-ci-cd-system)](https://github.com/jnonino/terraform-aws-ci-cd-system)
-[![](https://img.shields.io/github/issues-closed/jnonino/terraform-aws-ci-cd-system)](https://github.com/jnonino/terraform-aws-ci-cd-system)
-[![](https://img.shields.io/github/languages/code-size/jnonino/terraform-aws-ci-cd-system)](https://github.com/jnonino/terraform-aws-ci-cd-system)
-[![](https://img.shields.io/github/repo-size/jnonino/terraform-aws-ci-cd-system)](https://github.com/jnonino/terraform-aws-ci-cd-system)
+[![](https://img.shields.io/github/license/jnonino/terraform-aws-ecs-fargate-scheduled-task)](https://github.com/jnonino/terraform-aws-ecs-fargate-scheduled-task)
+[![](https://img.shields.io/github/issues/jnonino/terraform-aws-ecs-fargate-scheduled-task)](https://github.com/jnonino/terraform-aws-ecs-fargate-scheduled-task)
+[![](https://img.shields.io/github/issues-closed/jnonino/terraform-aws-ecs-fargate-scheduled-task)](https://github.com/jnonino/terraform-aws-ecs-fargate-scheduled-task)
+[![](https://img.shields.io/github/languages/code-size/jnonino/terraform-aws-ecs-fargate-scheduled-task)](https://github.com/jnonino/terraform-aws-ecs-fargate-scheduled-task)
+[![](https://img.shields.io/github/repo-size/jnonino/terraform-aws-ecs-fargate-scheduled-task)](https://github.com/jnonino/terraform-aws-ecs-fargate-scheduled-task)
 
 ## Usage
 
@@ -93,16 +93,16 @@ Check versions for this module on:
 The ECS cluster module should look like this:
 
         module "ecs-cluster": 
-            source       = "jnonino/ecs-cluster/aws"
-            version      = "1.0.0"
+            source       = "cn-terraform/ecs-cluster/aws"
+            version      = "1.0.2"
             name_preffix = var.name_preffix
             profile      = var.profile
             region       = var.region
         }
 
 Check versions for this module on:
-* Github Releases: <https://github.com/jnonino/terraform-aws-ecs-cluster/releases>
-* Terraform Module Registry: <https://registry.terraform.io/modules/jnonino/ecs-cluster/aws>
+* Github Releases: <https://github.com/cn-terraform/terraform-aws-ecs-cluster/releases>
+* Terraform Module Registry: <https://registry.terraform.io/modules/cn-terraform/ecs-cluster/aws>
 
 The task definition module should like this:
 
