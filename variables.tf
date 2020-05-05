@@ -6,17 +6,6 @@ variable "name_preffix" {
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
-# AWS CREDENTIALS AND REGION
-# ---------------------------------------------------------------------------------------------------------------------
-variable "profile" {
-  description = "AWS API key credentials to use"
-}
-
-variable "region" {
-  description = "AWS Region the infrastructure is hosted in"
-}
-
-# ---------------------------------------------------------------------------------------------------------------------
 # CLOUDWATCH EVENT RULE
 # ---------------------------------------------------------------------------------------------------------------------
 variable "event_rule_name" {
@@ -65,8 +54,8 @@ variable "event_target_ecs_target_task_definition_arn" {
   description = "(Required) The ARN of the task definition to use if the event target is an Amazon ECS cluster."
 }
 
-variable "ecs_execution_task_role_arn" {	
-  description = "(Required) The task definition execution role"	
+variable "ecs_execution_task_role_arn" {
+  description = "(Required) The task definition execution role"
 }
 
 variable "event_target_target_id" {
