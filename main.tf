@@ -1,6 +1,6 @@
-# ---------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 # CLOUDWATCH EVENT ROLE
-# ---------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 resource "aws_iam_role" "scheduled_task_cw_event_role" {
   name               = "${var.name_preffix}-st-cw-role"
   assume_role_policy = "${file("${path.module}/files/iam/scheduled_task_cw_event_role_assume_role_policy.json")}"
@@ -19,9 +19,9 @@ resource "aws_iam_role_policy" "scheduled_task_cw_event_role_cloudwatch_policy" 
   policy = "${data.template_file.scheduled_task_cw_event_role_cloudwatch_policy.rendered}"
 }
 
-# ---------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 # CLOUDWATCH EVENT RULE
-# ---------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 resource "aws_cloudwatch_event_rule" "event_rule" {
   name                = var.event_rule_name
   description         = var.event_rule_description
@@ -34,9 +34,9 @@ resource "aws_cloudwatch_event_rule" "event_rule" {
   }
 }
 
-# ---------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 # CLOUDWATCH EVENT TARGET
-# ---------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 resource "aws_cloudwatch_event_target" "ecs_scheduled_task" {
   rule       = aws_cloudwatch_event_rule.event_rule.name
   target_id  = var.event_target_target_id

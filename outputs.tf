@@ -1,6 +1,6 @@
-# ---------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 # CLOUDWATCH EVENT ROLE
-# ---------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 output "scheduled_task_cw_event_role_arn" {
   description = "The Amazon Resource Name (ARN) specifying the role."
   value       = aws_iam_role.scheduled_task_cw_event_role.arn
@@ -51,9 +51,9 @@ output "aws_iam_role_policy_scheduled_task_cw_event_role_cloudwatch_policy_role"
   value       = aws_iam_role_policy.scheduled_task_cw_event_role_cloudwatch_policy.role
 }
 
-# ---------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 # CLOUDWATCH EVENT RULE
-# ---------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 output "aws_cloudwatch_event_rule_event_rule_arn" {
   description = "The Amazon Resource Name (ARN) of the CloudWatch Event Rule."
   value       = aws_cloudwatch_event_rule.event_rule.arn
