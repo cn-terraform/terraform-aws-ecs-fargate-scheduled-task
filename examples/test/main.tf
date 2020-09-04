@@ -14,13 +14,13 @@ module "base-network" {
 
 module "cluster" {
   source  = "cn-terraform/ecs-cluster/aws"
-  version = "1.0.5"
+  version = "1.0.6"
   name    = "test-cluster"
 }
 
 module "td" {
   source          = "cn-terraform/ecs-fargate-task-definition/aws"
-  version         = "1.0.11"
+  version         = "1.0.14"
   name_preffix    = "test-td"
   container_image = "ubuntu"
   container_name  = "test"
