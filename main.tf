@@ -8,7 +8,7 @@ resource "aws_iam_role" "scheduled_task_cw_event_role" {
 
 data "template_file" "scheduled_task_cw_event_role_cloudwatch_policy" {
   template = file("${path.module}/files/iam/scheduled_task_cw_event_role_cloudwatch_policy.json")
-  vars     = {
+  vars = {
     TASK_EXECUTION_ROLE_ARN = var.ecs_execution_task_role_arn
   }
 }
@@ -45,11 +45,11 @@ resource "aws_cloudwatch_event_target" "ecs_scheduled_task" {
   input_path = var.event_target_input_path
   role_arn   = aws_iam_role.scheduled_task_cw_event_role.arn
   ecs_target {
-    task_definition_arn   = var.event_target_ecs_target_task_definition_arn
-    task_count            = var.event_target_ecs_target_task_count
-    platform_version      = var.event_target_ecs_target_platform_version
-    launch_type           = "FARGATE"
-    group                 = var.event_target_ecs_target_group
+    task_definition_arn = var.event_target_ecs_target_task_definition_arn
+    task_count          = var.event_target_ecs_target_task_count
+    platform_version    = var.event_target_ecs_target_platform_version
+    launch_type         = "FARGATE"
+    group               = var.event_target_ecs_target_group
     network_configuration {
       subnets          = var.event_target_ecs_target_subnets
       security_groups  = var.event_target_ecs_target_security_groups
