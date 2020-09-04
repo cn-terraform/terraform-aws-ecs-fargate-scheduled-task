@@ -2,7 +2,7 @@
 # CLOUDWATCH EVENT ROLE
 #------------------------------------------------------------------------------
 resource "aws_iam_role" "scheduled_task_cw_event_role" {
-  name               = "${var.name_preffix}-st-cw-role"
+  name               = "${var.name_prefix}-st-cw-role"
   assume_role_policy = file("${path.module}/files/iam/scheduled_task_cw_event_role_assume_role_policy.json")
 }
 
@@ -14,7 +14,7 @@ data "template_file" "scheduled_task_cw_event_role_cloudwatch_policy" {
 }
 
 resource "aws_iam_role_policy" "scheduled_task_cw_event_role_cloudwatch_policy" {
-  name   = "${var.name_preffix}-st-cw-policy"
+  name   = "${var.name_prefix}-st-cw-policy"
   role   = aws_iam_role.scheduled_task_cw_event_role.id
   policy = data.template_file.scheduled_task_cw_event_role_cloudwatch_policy.rendered
 }
@@ -30,7 +30,7 @@ resource "aws_cloudwatch_event_rule" "event_rule" {
   role_arn            = var.event_rule_role_arn
   is_enabled          = var.event_rule_is_enabled
   tags = {
-    Name = "${var.name_preffix}-cw-event-rule"
+    Name = "${var.name_prefix}-cw-event-rule"
   }
 }
 
