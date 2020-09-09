@@ -20,7 +20,7 @@ module "cluster" {
 
 module "td" {
   source          = "cn-terraform/ecs-fargate-task-definition/aws"
-  version         = "1.0.15"
+  version         = "1.0.16"
   name_prefix     = "test-td"
   container_image = "ubuntu"
   container_name  = "test"
