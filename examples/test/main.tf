@@ -26,6 +26,7 @@ module "task" {
   source                                      = "../../"
   name_prefix                                 = "test-task"
   event_rule_name                             = "test-rule"
+  event_rule_schedule_expression              = "cron(0 20 * * ? *)"
   ecs_cluster_arn                             = module.cluster.aws_ecs_cluster_cluster_arn
   event_target_ecs_target_subnets             = module.base-network.public_subnets_ids
   event_target_ecs_target_task_definition_arn = module.td.aws_ecs_task_definition_td_arn
