@@ -39,13 +39,13 @@ resource "aws_cloudwatch_event_rule" "event_rule" {
 # CLOUDWATCH EVENT TARGET
 #------------------------------------------------------------------------------
 resource "aws_cloudwatch_event_target" "ecs_scheduled_task" {
-  rule              = aws_cloudwatch_event_rule.event_rule.name
-  event_bus_name    = aws_cloudwatch_event_rule.event_rule.event_bus_name
-  target_id         = var.event_target_target_id
-  arn               = var.ecs_cluster_arn
-  input             = var.event_target_input
-  input_path        = var.event_target_input_path
-  role_arn          = aws_iam_role.scheduled_task_cw_event_role.arn
+  rule           = aws_cloudwatch_event_rule.event_rule.name
+  event_bus_name = aws_cloudwatch_event_rule.event_rule.event_bus_name
+  target_id      = var.event_target_target_id
+  arn            = var.ecs_cluster_arn
+  input          = var.event_target_input
+  input_path     = var.event_target_input_path
+  role_arn       = aws_iam_role.scheduled_task_cw_event_role.arn
 
   ecs_target {
     group               = var.event_target_ecs_target_group
