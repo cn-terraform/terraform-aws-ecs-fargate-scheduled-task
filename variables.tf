@@ -91,12 +91,12 @@ variable "event_target_ecs_target_task_definition_arn" {
 
 variable "event_target_ecs_target_subnets" {
   description = "The subnets associated with the task or service."
-  type        = list
+  type        = list(any)
 }
 
 variable "event_target_ecs_target_security_groups" {
   description = "(Optional) The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used."
-  type        = list
+  type        = list(any)
   default     = null
 }
 
