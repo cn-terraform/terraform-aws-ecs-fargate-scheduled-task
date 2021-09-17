@@ -77,6 +77,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_ecs_cluster_arn"></a> [ecs\_cluster\_arn](#input\_ecs\_cluster\_arn) | The ECS Cluster where the scheduled task will run | `any` | n/a | yes |
 | <a name="input_ecs_execution_task_role_arn"></a> [ecs\_execution\_task\_role\_arn](#input\_ecs\_execution\_task\_role\_arn) | (Required) The task definition execution role. The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. | `any` | n/a | yes |
+| <a name="input_ecs_task_role_arn"></a> [ecs\_task\_role\_arn](#input\_ecs\_task\_role\_arn) | (Optional) The task definition role. The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. | `any` | `null` | no |
 | <a name="input_event_rule_description"></a> [event\_rule\_description](#input\_event\_rule\_description) | (Optional) The description of the rule. | `any` | `null` | no |
 | <a name="input_event_rule_event_bus_name"></a> [event\_rule\_event\_bus\_name](#input\_event\_rule\_event\_bus\_name) | (Optional) The event bus to associate with this rule. If you omit this, the default event bus is used. | `any` | `null` | no |
 | <a name="input_event_rule_event_pattern"></a> [event\_rule\_event\_pattern](#input\_event\_rule\_event\_pattern) | (Optional) The event pattern described a JSON object. At least one of schedule\_expression or event\_pattern is required. | `any` | `null` | no |
