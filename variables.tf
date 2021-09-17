@@ -109,3 +109,4 @@ variable "event_target_ecs_target_assign_public_ip" {
   description = "(Optional) Assign a public IP address to the ENI. Default false."
   type        = bool
   default     = false
+}
