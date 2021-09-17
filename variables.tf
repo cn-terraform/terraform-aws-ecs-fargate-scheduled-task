@@ -69,6 +69,11 @@ variable "ecs_execution_task_role_arn" {
   description = "(Required) The task definition execution role. The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered."
 }
 
+variable "ecs_task_role_arn" {
+  description = "(Optional) The task definition role. The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered."
+  default     = null
+}
+
 variable "event_target_ecs_target_group" {
   description = "(Optional) Specifies an ECS task group for the task. The maximum length is 255 characters."
   default     = null
@@ -104,4 +109,3 @@ variable "event_target_ecs_target_assign_public_ip" {
   description = "(Optional) Assign a public IP address to the ENI. Default false."
   type        = bool
   default     = false
-}
