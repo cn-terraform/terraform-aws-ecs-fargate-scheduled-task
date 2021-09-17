@@ -30,5 +30,6 @@ module "task" {
   ecs_cluster_arn                             = module.cluster.aws_ecs_cluster_cluster_arn
   event_target_ecs_target_subnets             = module.base-network.public_subnets_ids
   event_target_ecs_target_task_definition_arn = module.td.aws_ecs_task_definition_td_arn
-  ecs_execution_task_role_arn                 = "Put your role ARN here"
+  ecs_execution_task_role_arn                 = "Put your execution role ARN here"
+  ecs_task_role_arn                           = "Put your role ARN here"
 }

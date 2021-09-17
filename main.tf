@@ -20,7 +20,7 @@ data "aws_iam_policy_document" "scheduled_task_cw_event_role_cloudwatch_policy" 
   }
   statement {
     actions   = ["iam:PassRole"]
-    resources = [var.ecs_execution_task_role_arn]
+    resources = var.ecs_task_role_arn == null ? [var.ecs_execution_task_role_arn] : [var.ecs_execution_task_role_arn, var.ecs_task_role_arn]
   }
 }
 
