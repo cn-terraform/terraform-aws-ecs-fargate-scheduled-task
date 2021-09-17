@@ -71,7 +71,7 @@ variable "ecs_execution_task_role_arn" {
 
 variable "ecs_task_role_arn" {
   description = "(Optional) The task definition role. The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered."
-  default     = ""
+  default     = null
 }
 
 variable "event_target_ecs_target_group" {
