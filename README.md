@@ -54,7 +54,7 @@ In order to run all checks at any point run the following command:
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.50.0 |
 
 ## Modules
 
@@ -88,6 +88,7 @@ No modules.
 | <a name="input_event_target_ecs_target_assign_public_ip"></a> [event\_target\_ecs\_target\_assign\_public\_ip](#input\_event\_target\_ecs\_target\_assign\_public\_ip) | (Optional) Assign a public IP address to the ENI. Default false. | `bool` | `false` | no |
 | <a name="input_event_target_ecs_target_group"></a> [event\_target\_ecs\_target\_group](#input\_event\_target\_ecs\_target\_group) | (Optional) Specifies an ECS task group for the task. The maximum length is 255 characters. | `any` | `null` | no |
 | <a name="input_event_target_ecs_target_platform_version"></a> [event\_target\_ecs\_target\_platform\_version](#input\_event\_target\_ecs\_target\_platform\_version) | (Optional) Specifies the platform version for the task. Specify only the numeric portion of the platform version, such as 1.1.0. For more information about valid platform versions, see AWS Fargate Platform Versions. Default to LATEST | `string` | `"LATEST"` | no |
+| <a name="input_event_target_ecs_target_propagate_tags"></a> [event\_target\_ecs\_target\_propagate\_tags](#input\_event\_target\_ecs\_target\_propagate\_tags) | (Optional) Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags are not propagated. | `bool` | `false` | no |
 | <a name="input_event_target_ecs_target_security_groups"></a> [event\_target\_ecs\_target\_security\_groups](#input\_event\_target\_ecs\_target\_security\_groups) | (Optional) The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used. | `list(any)` | `null` | no |
 | <a name="input_event_target_ecs_target_subnets"></a> [event\_target\_ecs\_target\_subnets](#input\_event\_target\_ecs\_target\_subnets) | The subnets associated with the task or service. | `list(any)` | n/a | yes |
 | <a name="input_event_target_ecs_target_task_count"></a> [event\_target\_ecs\_target\_task\_count](#input\_event\_target\_ecs\_target\_task\_count) | (Optional) The number of tasks to create based on the TaskDefinition. The default is 1. | `number` | `1` | no |
