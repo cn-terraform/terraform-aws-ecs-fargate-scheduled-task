@@ -49,14 +49,14 @@ In order to run all checks at any point run the following command:
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 3.74.1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.74 |
 | <a name="requirement_local"></a> [local](#requirement\_local) | 2.1.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.74.1 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.0.0 |
 
 ## Modules
 
@@ -66,12 +66,12 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_cloudwatch_event_rule.event_rule](https://registry.terraform.io/providers/hashicorp/aws/3.74.1/docs/resources/cloudwatch_event_rule) | resource |
-| [aws_cloudwatch_event_target.ecs_scheduled_task](https://registry.terraform.io/providers/hashicorp/aws/3.74.1/docs/resources/cloudwatch_event_target) | resource |
-| [aws_iam_role.scheduled_task_cw_event_role](https://registry.terraform.io/providers/hashicorp/aws/3.74.1/docs/resources/iam_role) | resource |
-| [aws_iam_role_policy.scheduled_task_cw_event_role_cloudwatch_policy](https://registry.terraform.io/providers/hashicorp/aws/3.74.1/docs/resources/iam_role_policy) | resource |
-| [aws_iam_policy_document.scheduled_task_cw_event_role_assume_role_policy](https://registry.terraform.io/providers/hashicorp/aws/3.74.1/docs/data-sources/iam_policy_document) | data source |
-| [aws_iam_policy_document.scheduled_task_cw_event_role_cloudwatch_policy](https://registry.terraform.io/providers/hashicorp/aws/3.74.1/docs/data-sources/iam_policy_document) | data source |
+| [aws_cloudwatch_event_rule.event_rule](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_rule) | resource |
+| [aws_cloudwatch_event_target.ecs_scheduled_task](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_target) | resource |
+| [aws_iam_role.scheduled_task_cw_event_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy.scheduled_task_cw_event_role_cloudwatch_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
+| [aws_iam_policy_document.scheduled_task_cw_event_role_assume_role_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.scheduled_task_cw_event_role_cloudwatch_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 ## Inputs
 
