@@ -113,6 +113,6 @@ variable "event_target_ecs_target_assign_public_ip" {
 
 variable "event_target_ecs_target_propagate_tags" {
   description = "(Optional) Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags are not propagated."
-  type        = bool
-  default     = false
+  type        = string
+  default     = ""
 }
