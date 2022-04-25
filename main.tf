@@ -69,7 +69,7 @@ resource "aws_cloudwatch_event_target" "ecs_scheduled_task" {
     platform_version    = var.event_target_ecs_target_platform_version
     task_count          = var.event_target_ecs_target_task_count
     task_definition_arn = var.event_target_ecs_target_task_definition_arn
-    propagate_tags      = var.event_target_ecs_target_propagate_tags
+    propagate_tags      = var.event_target_ecs_target_propagate_tags == "" ? null : var.event_target_ecs_target_propagate_tags
 
     network_configuration {
       subnets          = var.event_target_ecs_target_subnets
