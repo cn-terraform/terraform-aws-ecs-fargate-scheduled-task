@@ -56,7 +56,7 @@ In order to run all checks at any point run the following command:
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.0.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.24.0 |
 
 ## Modules
 
