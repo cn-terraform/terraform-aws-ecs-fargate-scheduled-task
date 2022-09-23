@@ -2,7 +2,7 @@
 # Misc
 #------------------------------------------------------------------------------
 variable "name_prefix" {
-  description = "Name prefix for resources on AWS"
+  description = "Name prefix for resources on AWS."
 }
 
 #------------------------------------------------------------------------------
@@ -52,7 +52,7 @@ variable "event_target_target_id" {
 }
 
 variable "ecs_cluster_arn" {
-  description = "The ECS Cluster where the scheduled task will run"
+  description = "The ECS Cluster where the scheduled task will run."
 }
 
 variable "event_target_input" {
@@ -80,7 +80,7 @@ variable "event_target_ecs_target_group" {
 }
 
 variable "event_target_ecs_target_platform_version" {
-  description = "(Optional) Specifies the platform version for the task. Specify only the numeric portion of the platform version, such as 1.1.0. For more information about valid platform versions, see AWS Fargate Platform Versions. Default to LATEST"
+  description = "(Optional) Specifies the platform version for the task. Specify only the numeric portion of the platform version, such as 1.1.0. For more information about valid platform versions, see AWS Fargate Platform Versions. Default to LATEST."
   default     = "LATEST"
 }
 
@@ -112,7 +112,7 @@ variable "event_target_ecs_target_assign_public_ip" {
 }
 
 variable "event_target_ecs_target_propagate_tags" {
-  description = "(Optional) Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags are not propagated."
+  description = "(Optional) Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags are not propagated. Tags can only be propagated to the task during task creation. Valid values: `TASK_DEFINITION` or leave empty to avoid propagation."
   type        = string
   default     = ""
 }

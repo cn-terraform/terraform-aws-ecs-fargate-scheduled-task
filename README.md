@@ -56,7 +56,7 @@ In order to run all checks at any point run the following command:
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.24.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.32.0 |
 
 ## Modules
 
@@ -77,7 +77,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_ecs_cluster_arn"></a> [ecs\_cluster\_arn](#input\_ecs\_cluster\_arn) | The ECS Cluster where the scheduled task will run | `any` | n/a | yes |
+| <a name="input_ecs_cluster_arn"></a> [ecs\_cluster\_arn](#input\_ecs\_cluster\_arn) | The ECS Cluster where the scheduled task will run. | `any` | n/a | yes |
 | <a name="input_ecs_execution_task_role_arn"></a> [ecs\_execution\_task\_role\_arn](#input\_ecs\_execution\_task\_role\_arn) | (Required) The task definition execution role. The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. | `any` | n/a | yes |
 | <a name="input_ecs_task_role_arn"></a> [ecs\_task\_role\_arn](#input\_ecs\_task\_role\_arn) | (Optional) The task definition role. The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. | `any` | `null` | no |
 | <a name="input_event_rule_description"></a> [event\_rule\_description](#input\_event\_rule\_description) | (Optional) The description of the rule. | `any` | `null` | no |
@@ -89,8 +89,8 @@ No modules.
 | <a name="input_event_rule_schedule_expression"></a> [event\_rule\_schedule\_expression](#input\_event\_rule\_schedule\_expression) | (Optional) The scheduling expression. For example, cron(0 20 * * ? *) or rate(5 minutes). At least one of event\_rule\_schedule\_expression or event\_rule\_event\_pattern is required. Can only be used on the default event bus. | `any` | `null` | no |
 | <a name="input_event_target_ecs_target_assign_public_ip"></a> [event\_target\_ecs\_target\_assign\_public\_ip](#input\_event\_target\_ecs\_target\_assign\_public\_ip) | (Optional) Assign a public IP address to the ENI. Default false. | `bool` | `false` | no |
 | <a name="input_event_target_ecs_target_group"></a> [event\_target\_ecs\_target\_group](#input\_event\_target\_ecs\_target\_group) | (Optional) Specifies an ECS task group for the task. The maximum length is 255 characters. | `any` | `null` | no |
-| <a name="input_event_target_ecs_target_platform_version"></a> [event\_target\_ecs\_target\_platform\_version](#input\_event\_target\_ecs\_target\_platform\_version) | (Optional) Specifies the platform version for the task. Specify only the numeric portion of the platform version, such as 1.1.0. For more information about valid platform versions, see AWS Fargate Platform Versions. Default to LATEST | `string` | `"LATEST"` | no |
-| <a name="input_event_target_ecs_target_propagate_tags"></a> [event\_target\_ecs\_target\_propagate\_tags](#input\_event\_target\_ecs\_target\_propagate\_tags) | (Optional) Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags are not propagated. | `string` | `""` | no |
+| <a name="input_event_target_ecs_target_platform_version"></a> [event\_target\_ecs\_target\_platform\_version](#input\_event\_target\_ecs\_target\_platform\_version) | (Optional) Specifies the platform version for the task. Specify only the numeric portion of the platform version, such as 1.1.0. For more information about valid platform versions, see AWS Fargate Platform Versions. Default to LATEST. | `string` | `"LATEST"` | no |
+| <a name="input_event_target_ecs_target_propagate_tags"></a> [event\_target\_ecs\_target\_propagate\_tags](#input\_event\_target\_ecs\_target\_propagate\_tags) | (Optional) Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags are not propagated. Tags can only be propagated to the task during task creation. Valid values: `TASK_DEFINITION` or leave empty to avoid propagation. | `string` | `""` | no |
 | <a name="input_event_target_ecs_target_security_groups"></a> [event\_target\_ecs\_target\_security\_groups](#input\_event\_target\_ecs\_target\_security\_groups) | (Optional) The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used. | `list(any)` | `null` | no |
 | <a name="input_event_target_ecs_target_subnets"></a> [event\_target\_ecs\_target\_subnets](#input\_event\_target\_ecs\_target\_subnets) | The subnets associated with the task or service. | `list(any)` | n/a | yes |
 | <a name="input_event_target_ecs_target_task_count"></a> [event\_target\_ecs\_target\_task\_count](#input\_event\_target\_ecs\_target\_task\_count) | (Optional) The number of tasks to create based on the TaskDefinition. The default is 1. | `number` | `1` | no |
@@ -98,7 +98,7 @@ No modules.
 | <a name="input_event_target_input"></a> [event\_target\_input](#input\_event\_target\_input) | (Optional) Valid JSON text passed to the target. Conflicts with event\_target\_input\_path. | `any` | `null` | no |
 | <a name="input_event_target_input_path"></a> [event\_target\_input\_path](#input\_event\_target\_input\_path) | (Optional) The value of the JSONPath that is used for extracting part of the matched event when passing it to the target. Conflicts with event\_target\_input. | `any` | `null` | no |
 | <a name="input_event_target_target_id"></a> [event\_target\_target\_id](#input\_event\_target\_target\_id) | (Optional) The unique target assignment ID. If missing, will generate a random, unique id. | `any` | `null` | no |
-| <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | Name prefix for resources on AWS | `any` | n/a | yes |
+| <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | Name prefix for resources on AWS. | `any` | n/a | yes |
 
 ## Outputs
 
