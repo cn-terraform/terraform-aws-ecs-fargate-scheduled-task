@@ -17,7 +17,7 @@ data "aws_iam_policy_document" "scheduled_task_cw_event_role_cloudwatch_policy" 
     effect    = "Allow"
     actions   = ["ecs:RunTask"]
     resources = ["*"]
-    condition = {
+    condition {
       test     = "ArnEquals"
       variable = "ecs:cluster"
       values   = [var.ecs_cluster_arn]
