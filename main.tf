@@ -36,7 +36,7 @@ resource "aws_iam_role" "scheduled_task_cw_event_role" {
 }
 
 resource "aws_iam_role_policy" "scheduled_task_cw_event_role_cloudwatch_policy" {
-  count = var.event_rule_role_arn == null ? 1 : 0
+  count  = var.event_rule_role_arn == null ? 1 : 0
   name   = "${var.name_prefix}-st-cw-policy"
   role   = aws_iam_role.scheduled_task_cw_event_role[0].id
   policy = data.aws_iam_policy_document.scheduled_task_cw_event_role_cloudwatch_policy.json
