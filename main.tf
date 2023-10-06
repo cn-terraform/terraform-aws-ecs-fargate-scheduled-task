@@ -30,11 +30,13 @@ data "aws_iam_policy_document" "scheduled_task_cw_event_role_cloudwatch_policy" 
 }
 
 resource "aws_iam_role" "scheduled_task_cw_event_role" {
+  count              = var.event_rule_role_arn == null ? 1 : 0
   name               = "${var.name_prefix}-st-cw-role"
   assume_role_policy = data.aws_iam_policy_document.scheduled_task_cw_event_role_assume_role_policy.json
 }
 
 resource "aws_iam_role_policy" "scheduled_task_cw_event_role_cloudwatch_policy" {
+  count = var.event_rule_role_arn == null ? 1 : 0
   name   = "${var.name_prefix}-st-cw-policy"
   role   = aws_iam_role.scheduled_task_cw_event_role.id
   policy = data.aws_iam_policy_document.scheduled_task_cw_event_role_cloudwatch_policy.json
@@ -49,7 +51,7 @@ resource "aws_cloudwatch_event_rule" "event_rule" {
   event_bus_name      = var.event_rule_event_bus_name
   event_pattern       = var.event_rule_event_pattern
   description         = var.event_rule_description
-  role_arn            = var.event_rule_role_arn
+  role_arn            = var.event_rule_role_arn == null ? aws_iam_role.scheduled_task_cw_event_role[0].arn : var.event_rule_role_arn
   is_enabled          = var.event_rule_is_enabled
   tags = {
     Name = "${var.name_prefix}-cw-event-rule"
@@ -66,8 +68,7 @@ resource "aws_cloudwatch_event_target" "ecs_scheduled_task" {
   arn            = var.ecs_cluster_arn
   input          = var.event_target_input
   input_path     = var.event_target_input_path
-  role_arn       = aws_iam_role.scheduled_task_cw_event_role.arn
-
+  role_arn       = aws_cloudwatch_event_rule.event_rule.role_arn
   ecs_target {
     group               = var.event_target_ecs_target_group
     launch_type         = "FARGATE"
