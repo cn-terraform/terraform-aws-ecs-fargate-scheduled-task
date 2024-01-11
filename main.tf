@@ -33,6 +33,8 @@ resource "aws_iam_role" "scheduled_task_cw_event_role" {
   count              = var.event_rule_role_arn == null ? 1 : 0
   name               = "${var.name_prefix}-st-cw-role"
   assume_role_policy = data.aws_iam_policy_document.scheduled_task_cw_event_role_assume_role_policy.json
+
+  permissions_boundary = var.permissions_boundary == null ? null : var.permissions_boundary
 }
 
 resource "aws_iam_role_policy" "scheduled_task_cw_event_role_cloudwatch_policy" {
