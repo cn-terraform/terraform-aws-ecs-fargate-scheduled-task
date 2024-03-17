@@ -44,10 +44,10 @@ variable "event_rule_role_arn" {
   type        = string
 }
 
-variable "event_rule_is_enabled" {
-  description = "(Optional) Whether the rule should be enabled (defaults to true)."
-  default     = true
-  type        = bool
+variable "event_rule_state" {
+  description = "(Optional) State of the rule. Valid values are DISABLED, ENABLED, and ENABLED_WITH_ALL_CLOUDTRAIL_MANAGEMENT_EVENTS. When state is ENABLED, the rule is enabled for all events except those delivered by CloudTrail. To also enable the rule for events delivered by CloudTrail, set state to ENABLED_WITH_ALL_CLOUDTRAIL_MANAGEMENT_EVENTS. Defaults to ENABLED."
+  default     = "ENABLED"
+  type        = string
 }
 
 #------------------------------------------------------------------------------
