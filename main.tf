@@ -54,7 +54,7 @@ resource "aws_cloudwatch_event_rule" "event_rule" {
   event_pattern       = var.event_rule_event_pattern
   description         = var.event_rule_description
   role_arn            = var.event_rule_role_arn == null ? aws_iam_role.scheduled_task_cw_event_role[0].arn : var.event_rule_role_arn
-  is_enabled          = var.event_rule_is_enabled
+  state               = var.event_rule_state
   tags = {
     Name = "${var.name_prefix}-cw-event-rule"
   }
