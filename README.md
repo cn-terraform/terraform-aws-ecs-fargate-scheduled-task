@@ -56,7 +56,7 @@ In order to run all checks at any point run the following command:
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.31.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.41.0 |
 
 ## Modules
 
@@ -83,10 +83,10 @@ No modules.
 | <a name="input_event_rule_description"></a> [event\_rule\_description](#input\_event\_rule\_description) | (Optional) The description of the rule. | `string` | `null` | no |
 | <a name="input_event_rule_event_bus_name"></a> [event\_rule\_event\_bus\_name](#input\_event\_rule\_event\_bus\_name) | (Optional) The event bus to associate with this rule. If you omit this, the default event bus is used. | `string` | `null` | no |
 | <a name="input_event_rule_event_pattern"></a> [event\_rule\_event\_pattern](#input\_event\_rule\_event\_pattern) | (Optional) The event pattern described a JSON object. At least one of schedule\_expression or event\_pattern is required. | `string` | `null` | no |
-| <a name="input_event_rule_is_enabled"></a> [event\_rule\_is\_enabled](#input\_event\_rule\_is\_enabled) | (Optional) Whether the rule should be enabled (defaults to true). | `bool` | `true` | no |
 | <a name="input_event_rule_name"></a> [event\_rule\_name](#input\_event\_rule\_name) | The name of the rule. | `string` | n/a | yes |
 | <a name="input_event_rule_role_arn"></a> [event\_rule\_role\_arn](#input\_event\_rule\_role\_arn) | (Optional) The Amazon Resource Name (ARN) associated with the role that is used for target invocation. | `string` | `null` | no |
 | <a name="input_event_rule_schedule_expression"></a> [event\_rule\_schedule\_expression](#input\_event\_rule\_schedule\_expression) | (Optional) The scheduling expression. For example, cron(0 20 * * ? *) or rate(5 minutes). At least one of event\_rule\_schedule\_expression or event\_rule\_event\_pattern is required. Can only be used on the default event bus. | `string` | `null` | no |
+| <a name="input_event_rule_state"></a> [event\_rule\_state](#input\_event\_rule\_state) | (Optional) State of the rule. Valid values are DISABLED, ENABLED, and ENABLED\_WITH\_ALL\_CLOUDTRAIL\_MANAGEMENT\_EVENTS. When state is ENABLED, the rule is enabled for all events except those delivered by CloudTrail. To also enable the rule for events delivered by CloudTrail, set state to ENABLED\_WITH\_ALL\_CLOUDTRAIL\_MANAGEMENT\_EVENTS. Defaults to ENABLED. | `string` | `"ENABLED"` | no |
 | <a name="input_event_target_ecs_target_assign_public_ip"></a> [event\_target\_ecs\_target\_assign\_public\_ip](#input\_event\_target\_ecs\_target\_assign\_public\_ip) | (Optional) Assign a public IP address to the ENI. Default false. | `bool` | `false` | no |
 | <a name="input_event_target_ecs_target_group"></a> [event\_target\_ecs\_target\_group](#input\_event\_target\_ecs\_target\_group) | (Optional) Specifies an ECS task group for the task. The maximum length is 255 characters. | `string` | `null` | no |
 | <a name="input_event_target_ecs_target_platform_version"></a> [event\_target\_ecs\_target\_platform\_version](#input\_event\_target\_ecs\_target\_platform\_version) | (Optional) Specifies the platform version for the task. Specify only the numeric portion of the platform version, such as 1.1.0. For more information about valid platform versions, see AWS Fargate Platform Versions. Default to LATEST. | `string` | `"LATEST"` | no |
