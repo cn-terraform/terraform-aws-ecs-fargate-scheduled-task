@@ -50,15 +50,26 @@ output "aws_iam_role_policy_scheduled_task_cw_event_role_cloudwatch_policy_role"
   value       = var.event_rule_role_arn == null ? aws_iam_role_policy.scheduled_task_cw_event_role_cloudwatch_policy[0].role : null
 }
 
-#------------------------------------------------------------------------------
-# CLOUDWATCH EVENT RULE
-#------------------------------------------------------------------------------
-output "aws_cloudwatch_event_rule_event_rule_id" {
-  description = "The name of the rule."
-  value       = aws_cloudwatch_event_rule.event_rule.id
+#######################
+# CloudWatch Event Rule
+#######################
+output "cloudwatch_event_rule" {
+  description = "Values from the created CloudWatch Event Rule."
+  value       = aws_cloudwatch_event_rule.event_rule
 }
 
-output "aws_cloudwatch_event_rule_event_rule_arn" {
-  description = "The Amazon Resource Name (ARN) of the CloudWatch Event Rule."
-  value       = aws_cloudwatch_event_rule.event_rule.arn
+#########################
+# CloudWatch Event Target
+#########################
+output "cloudwatch_event_target" {
+  description = "Values from the created CloudWatch Event Target."
+  value       = aws_cloudwatch_event_target.ecs_scheduled_task
+}
+
+#######################
+# CloudWatch Event Role
+#######################
+output "cloudwatch_event_role" {
+  description = "Values from the created CloudWatch Event Role. Will be null if using a custom role ARN."
+  value       = var.event_rule_role_arn == null ? aws_iam_role.scheduled_task_cw_event_role[0] : null
 }

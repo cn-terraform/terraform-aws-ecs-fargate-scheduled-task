@@ -33,30 +33,33 @@ The ECS Task Definition module:
 
 Pleas run this command right after cloning the repository.
 
-        pre-commit install
+```bash
+pre-commit install
+```
 
 For that you may need to install the following tools:
-* [Pre-commit](https://pre-commit.com/) 
+* [Pre-commit](https://pre-commit.com/)
 * [Terraform Docs](https://terraform-docs.io/)
 
 In order to run all checks at any point run the following command:
 
-        pre-commit run --all-files
+```bash
+pre-commit run --all-files
+```
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4 |
-| <a name="requirement_local"></a> [local](#requirement\_local) | >= 2 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.7 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~>6 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.41.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.33.0 |
 
 ## Modules
 
@@ -72,31 +75,42 @@ No modules.
 | [aws_iam_role_policy.scheduled_task_cw_event_role_cloudwatch_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
 | [aws_iam_policy_document.scheduled_task_cw_event_role_assume_role_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.scheduled_task_cw_event_role_cloudwatch_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.scheduled_task_cw_event_role_pass_role_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.scheduled_task_cw_event_role_run_ecs_tasks_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_ecs_cluster_arn"></a> [ecs\_cluster\_arn](#input\_ecs\_cluster\_arn) | The ECS Cluster where the scheduled task will run. | `string` | n/a | yes |
-| <a name="input_ecs_execution_task_role_arn"></a> [ecs\_execution\_task\_role\_arn](#input\_ecs\_execution\_task\_role\_arn) | (Required) The task definition execution role. The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. | `string` | n/a | yes |
+| <a name="input_additional_tags"></a> [additional\_tags](#input\_additional\_tags) | (Optional) Additional tags to add to resources. These will be merged with the default tags added by the module. If configured with a provider default\_tags configuration block present, tags with matching keys will overwrite those defined at the provider-level. | `map(string)` | `{}` | no |
+| <a name="input_ecs_execution_task_role_arn"></a> [ecs\_execution\_task\_role\_arn](#input\_ecs\_execution\_task\_role\_arn) | (Optional) The task definition execution role. The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. | `string` | `null` | no |
 | <a name="input_ecs_task_role_arn"></a> [ecs\_task\_role\_arn](#input\_ecs\_task\_role\_arn) | (Optional) The task definition role. The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. | `string` | `null` | no |
 | <a name="input_event_rule_description"></a> [event\_rule\_description](#input\_event\_rule\_description) | (Optional) The description of the rule. | `string` | `null` | no |
-| <a name="input_event_rule_event_bus_name"></a> [event\_rule\_event\_bus\_name](#input\_event\_rule\_event\_bus\_name) | (Optional) The event bus to associate with this rule. If you omit this, the default event bus is used. | `string` | `null` | no |
-| <a name="input_event_rule_event_pattern"></a> [event\_rule\_event\_pattern](#input\_event\_rule\_event\_pattern) | (Optional) The event pattern described a JSON object. At least one of schedule\_expression or event\_pattern is required. | `string` | `null` | no |
-| <a name="input_event_rule_name"></a> [event\_rule\_name](#input\_event\_rule\_name) | The name of the rule. | `string` | n/a | yes |
-| <a name="input_event_rule_role_arn"></a> [event\_rule\_role\_arn](#input\_event\_rule\_role\_arn) | (Optional) The Amazon Resource Name (ARN) associated with the role that is used for target invocation. | `string` | `null` | no |
-| <a name="input_event_rule_schedule_expression"></a> [event\_rule\_schedule\_expression](#input\_event\_rule\_schedule\_expression) | (Optional) The scheduling expression. For example, cron(0 20 * * ? *) or rate(5 minutes). At least one of event\_rule\_schedule\_expression or event\_rule\_event\_pattern is required. Can only be used on the default event bus. | `string` | `null` | no |
+| <a name="input_event_rule_event_bus_name"></a> [event\_rule\_event\_bus\_name](#input\_event\_rule\_event\_bus\_name) | (Optional) The name or ARN of the event bus to associate with this rule. If you omit this, the default event bus is used. | `string` | `null` | no |
+| <a name="input_event_rule_event_pattern"></a> [event\_rule\_event\_pattern](#input\_event\_rule\_event\_pattern) | (Optional) The event pattern described a JSON object. At least one of schedule\_expression or event\_pattern is required. Note: The event pattern size is 2048 by default but it is adjustable up to 4096 characters by submitting a service quota increase request. | `string` | `null` | no |
+| <a name="input_event_rule_force_destroy"></a> [event\_rule\_force\_destroy](#input\_event\_rule\_force\_destroy) | (Optional) Used to delete managed rules created by AWS. Defaults to false. | `bool` | `false` | no |
+| <a name="input_event_rule_name"></a> [event\_rule\_name](#input\_event\_rule\_name) | The name of the rule. If omitted, Terraform will assign a random, unique name. Conflicts with name\_prefix. | `string` | n/a | yes |
+| <a name="input_event_rule_role_arn"></a> [event\_rule\_role\_arn](#input\_event\_rule\_role\_arn) | (Optional) The Amazon Resource Name (ARN) associated with the role that is used for target invocation. If not set a role will be created with the necessary permissions to invoke the target when the rule is triggered. | `string` | `null` | no |
+| <a name="input_event_rule_schedule_expression"></a> [event\_rule\_schedule\_expression](#input\_event\_rule\_schedule\_expression) | (Optional) The scheduling expression. For example, cron(0 20 * * ? *) or rate(5 minutes). At least one of schedule\_expression or event\_pattern is required. Can only be used on the default event bus. | `string` | `null` | no |
 | <a name="input_event_rule_state"></a> [event\_rule\_state](#input\_event\_rule\_state) | (Optional) State of the rule. Valid values are DISABLED, ENABLED, and ENABLED\_WITH\_ALL\_CLOUDTRAIL\_MANAGEMENT\_EVENTS. When state is ENABLED, the rule is enabled for all events except those delivered by CloudTrail. To also enable the rule for events delivered by CloudTrail, set state to ENABLED\_WITH\_ALL\_CLOUDTRAIL\_MANAGEMENT\_EVENTS. Defaults to ENABLED. | `string` | `"ENABLED"` | no |
-| <a name="input_event_target_ecs_target_assign_public_ip"></a> [event\_target\_ecs\_target\_assign\_public\_ip](#input\_event\_target\_ecs\_target\_assign\_public\_ip) | (Optional) Assign a public IP address to the ENI. Default false. | `bool` | `false` | no |
+| <a name="input_event_target_ecs_cluster_arn"></a> [event\_target\_ecs\_cluster\_arn](#input\_event\_target\_ecs\_cluster\_arn) | The ECS Cluster where the scheduled task will run. | `string` | n/a | yes |
+| <a name="input_event_target_ecs_target_additional_tags"></a> [event\_target\_ecs\_target\_additional\_tags](#input\_event\_target\_ecs\_target\_additional\_tags) | (Optional) Additional tags to add to the ECS target. These will be merged with the default tags added by the module and the additional\_tags variable. If configured with a provider default\_tags configuration block present, tags with matching keys will overwrite those defined at the provider-level. | `map(string)` | `{}` | no |
+| <a name="input_event_target_ecs_target_assign_public_ip"></a> [event\_target\_ecs\_target\_assign\_public\_ip](#input\_event\_target\_ecs\_target\_assign\_public\_ip) | (Optional) Assign a public IP address to the ENI. Valid values are true or false. Defaults to false. | `bool` | `false` | no |
+| <a name="input_event_target_ecs_target_enable_ecs_managed_tags"></a> [event\_target\_ecs\_target\_enable\_ecs\_managed\_tags](#input\_event\_target\_ecs\_target\_enable\_ecs\_managed\_tags) | (Optional) Specifies whether to enable Amazon ECS managed tags for the task. | `bool` | `false` | no |
+| <a name="input_event_target_ecs_target_enable_execute_command"></a> [event\_target\_ecs\_target\_enable\_execute\_command](#input\_event\_target\_ecs\_target\_enable\_execute\_command) | (Optional) Whether or not to enable the execute command functionality for the containers in this task. If true, this enables execute command functionality on all containers in the task. | `bool` | `false` | no |
 | <a name="input_event_target_ecs_target_group"></a> [event\_target\_ecs\_target\_group](#input\_event\_target\_ecs\_target\_group) | (Optional) Specifies an ECS task group for the task. The maximum length is 255 characters. | `string` | `null` | no |
 | <a name="input_event_target_ecs_target_platform_version"></a> [event\_target\_ecs\_target\_platform\_version](#input\_event\_target\_ecs\_target\_platform\_version) | (Optional) Specifies the platform version for the task. Specify only the numeric portion of the platform version, such as 1.1.0. For more information about valid platform versions, see AWS Fargate Platform Versions. Default to LATEST. | `string` | `"LATEST"` | no |
-| <a name="input_event_target_ecs_target_propagate_tags"></a> [event\_target\_ecs\_target\_propagate\_tags](#input\_event\_target\_ecs\_target\_propagate\_tags) | (Optional) Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags are not propagated. Tags can only be propagated to the task during task creation. Valid values: `TASK_DEFINITION` or leave empty to avoid propagation. | `string` | `""` | no |
-| <a name="input_event_target_ecs_target_security_groups"></a> [event\_target\_ecs\_target\_security\_groups](#input\_event\_target\_ecs\_target\_security\_groups) | (Optional) The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used. | `list(any)` | `null` | no |
-| <a name="input_event_target_ecs_target_subnets"></a> [event\_target\_ecs\_target\_subnets](#input\_event\_target\_ecs\_target\_subnets) | The subnets associated with the task or service. | `list(any)` | n/a | yes |
-| <a name="input_event_target_ecs_target_task_count"></a> [event\_target\_ecs\_target\_task\_count](#input\_event\_target\_ecs\_target\_task\_count) | (Optional) The number of tasks to create based on the TaskDefinition. The default is 1. | `number` | `1` | no |
+| <a name="input_event_target_ecs_target_propagate_tags"></a> [event\_target\_ecs\_target\_propagate\_tags](#input\_event\_target\_ecs\_target\_propagate\_tags) | (Optional) Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags are not propagated. Tags can only be propagated to the task during task creation. The only valid value is: TASK\_DEFINITION. | `string` | `""` | no |
+| <a name="input_event_target_ecs_target_security_groups"></a> [event\_target\_ecs\_target\_security\_groups](#input\_event\_target\_ecs\_target\_security\_groups) | (Optional) The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used. | `list(string)` | `null` | no |
+| <a name="input_event_target_ecs_target_subnets"></a> [event\_target\_ecs\_target\_subnets](#input\_event\_target\_ecs\_target\_subnets) | (Required) The subnets associated with the task or service. | `list(string)` | n/a | yes |
+| <a name="input_event_target_ecs_target_task_count"></a> [event\_target\_ecs\_target\_task\_count](#input\_event\_target\_ecs\_target\_task\_count) | (Optional) The number of tasks to create based on the TaskDefinition. Defaults to 1. | `number` | `1` | no |
 | <a name="input_event_target_ecs_target_task_definition_arn"></a> [event\_target\_ecs\_target\_task\_definition\_arn](#input\_event\_target\_ecs\_target\_task\_definition\_arn) | (Required) The ARN of the task definition to use if the event target is an Amazon ECS cluster. | `string` | n/a | yes |
-| <a name="input_event_target_input"></a> [event\_target\_input](#input\_event\_target\_input) | (Optional) Valid JSON text passed to the target. Conflicts with event\_target\_input\_path. | `string` | `null` | no |
-| <a name="input_event_target_input_path"></a> [event\_target\_input\_path](#input\_event\_target\_input\_path) | (Optional) The value of the JSONPath that is used for extracting part of the matched event when passing it to the target. Conflicts with event\_target\_input. | `string` | `null` | no |
+| <a name="input_event_target_force_destroy"></a> [event\_target\_force\_destroy](#input\_event\_target\_force\_destroy) | (Optional) Used to delete managed rules created by AWS. Defaults to false. | `bool` | `false` | no |
+| <a name="input_event_target_input"></a> [event\_target\_input](#input\_event\_target\_input) | (Optional) Valid JSON text passed to the target. Conflicts with event\_target\_input\_path and event\_target\_input\_transformer. | `string` | `null` | no |
+| <a name="input_event_target_input_path"></a> [event\_target\_input\_path](#input\_event\_target\_input\_path) | (Optional) The value of the JSONPath that is used for extracting part of the matched event when passing it to the target. Conflicts with event\_target\_input and event\_target\_input\_transformer. | `string` | `null` | no |
+| <a name="input_event_target_input_transformer"></a> [event\_target\_input\_transformer](#input\_event\_target\_input\_transformer) | (Optional) Parameters used when you are providing a custom event\_target\_input to a target based on certain event data. Conflicts with input and event\_target\_input\_path. | <pre>object({<br/>    input_template = string<br/>    input_paths    = optional(map(string))<br/>  })</pre> | `null` | no |
+| <a name="input_event_target_retry_policy_maximum_event_age_in_seconds"></a> [event\_target\_retry\_policy\_maximum\_event\_age\_in\_seconds](#input\_event\_target\_retry\_policy\_maximum\_event\_age\_in\_seconds) | (Optional) The age in seconds to continue to make retry attempts. | `number` | `null` | no |
+| <a name="input_event_target_retry_policy_maximum_retry_attempts"></a> [event\_target\_retry\_policy\_maximum\_retry\_attempts](#input\_event\_target\_retry\_policy\_maximum\_retry\_attempts) | (Optional) maximum number of retry attempts to make before the request fails. | `number` | `null` | no |
 | <a name="input_event_target_target_id"></a> [event\_target\_target\_id](#input\_event\_target\_target\_id) | (Optional) The unique target assignment ID. If missing, will generate a random, unique id. | `string` | `null` | no |
 | <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | Name prefix for resources on AWS. | `string` | n/a | yes |
 | <a name="input_permissions_boundary"></a> [permissions\_boundary](#input\_permissions\_boundary) | (Optional) The ARN of the policy that is used to set the permissions boundary for the role. | `string` | `null` | no |
@@ -105,16 +119,17 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_aws_cloudwatch_event_rule_event_rule_arn"></a> [aws\_cloudwatch\_event\_rule\_event\_rule\_arn](#output\_aws\_cloudwatch\_event\_rule\_event\_rule\_arn) | The Amazon Resource Name (ARN) of the CloudWatch Event Rule. |
-| <a name="output_aws_cloudwatch_event_rule_event_rule_id"></a> [aws\_cloudwatch\_event\_rule\_event\_rule\_id](#output\_aws\_cloudwatch\_event\_rule\_event\_rule\_id) | The name of the rule. |
 | <a name="output_aws_iam_role_policy_scheduled_task_cw_event_role_cloudwatch_policy_id"></a> [aws\_iam\_role\_policy\_scheduled\_task\_cw\_event\_role\_cloudwatch\_policy\_id](#output\_aws\_iam\_role\_policy\_scheduled\_task\_cw\_event\_role\_cloudwatch\_policy\_id) | The role policy ID, in the form of role\_name:role\_policy\_name. |
 | <a name="output_aws_iam_role_policy_scheduled_task_cw_event_role_cloudwatch_policy_name"></a> [aws\_iam\_role\_policy\_scheduled\_task\_cw\_event\_role\_cloudwatch\_policy\_name](#output\_aws\_iam\_role\_policy\_scheduled\_task\_cw\_event\_role\_cloudwatch\_policy\_name) | The name of the policy. |
 | <a name="output_aws_iam_role_policy_scheduled_task_cw_event_role_cloudwatch_policy_policy"></a> [aws\_iam\_role\_policy\_scheduled\_task\_cw\_event\_role\_cloudwatch\_policy\_policy](#output\_aws\_iam\_role\_policy\_scheduled\_task\_cw\_event\_role\_cloudwatch\_policy\_policy) | The policy document attached to the role. |
 | <a name="output_aws_iam_role_policy_scheduled_task_cw_event_role_cloudwatch_policy_role"></a> [aws\_iam\_role\_policy\_scheduled\_task\_cw\_event\_role\_cloudwatch\_policy\_role](#output\_aws\_iam\_role\_policy\_scheduled\_task\_cw\_event\_role\_cloudwatch\_policy\_role) | The name of the role associated with the policy. |
+| <a name="output_cloudwatch_event_role"></a> [cloudwatch\_event\_role](#output\_cloudwatch\_event\_role) | Values from the created CloudWatch Event Role. Will be null if using a custom role ARN. |
+| <a name="output_cloudwatch_event_rule"></a> [cloudwatch\_event\_rule](#output\_cloudwatch\_event\_rule) | Values from the created CloudWatch Event Rule. |
+| <a name="output_cloudwatch_event_target"></a> [cloudwatch\_event\_target](#output\_cloudwatch\_event\_target) | Values from the created CloudWatch Event Target. |
 | <a name="output_scheduled_task_cw_event_role_arn"></a> [scheduled\_task\_cw\_event\_role\_arn](#output\_scheduled\_task\_cw\_event\_role\_arn) | The Amazon Resource Name (ARN) specifying the role. |
 | <a name="output_scheduled_task_cw_event_role_create_date"></a> [scheduled\_task\_cw\_event\_role\_create\_date](#output\_scheduled\_task\_cw\_event\_role\_create\_date) | The creation date of the IAM role. |
 | <a name="output_scheduled_task_cw_event_role_description"></a> [scheduled\_task\_cw\_event\_role\_description](#output\_scheduled\_task\_cw\_event\_role\_description) | The description of the role. |
 | <a name="output_scheduled_task_cw_event_role_id"></a> [scheduled\_task\_cw\_event\_role\_id](#output\_scheduled\_task\_cw\_event\_role\_id) | The name of the role. |
 | <a name="output_scheduled_task_cw_event_role_name"></a> [scheduled\_task\_cw\_event\_role\_name](#output\_scheduled\_task\_cw\_event\_role\_name) | The name of the role. |
 | <a name="output_scheduled_task_cw_event_role_unique_id"></a> [scheduled\_task\_cw\_event\_role\_unique\_id](#output\_scheduled\_task\_cw\_event\_role\_unique\_id) | The stable and unique string identifying the role. |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->
