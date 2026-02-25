@@ -33,7 +33,9 @@ The ECS Task Definition module:
 
 Pleas run this command right after cloning the repository.
 
-        pre-commit install
+```bash
+pre-commit install
+```
 
 For that you may need to install the following tools:
 * [Pre-commit](https://pre-commit.com/)
@@ -41,21 +43,23 @@ For that you may need to install the following tools:
 
 In order to run all checks at any point run the following command:
 
-        pre-commit run --all-files
+```bash
+pre-commit run --all-files
+```
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.5 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.7 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~>6 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.31.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.33.0 |
 
 ## Modules
 
