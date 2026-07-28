@@ -50,6 +50,22 @@ data "aws_iam_policy_document" "scheduled_task_cw_event_role_cloudwatch_policy" 
     data.aws_iam_policy_document.scheduled_task_cw_event_role_run_ecs_tasks_policy.json,
     var.ecs_execution_task_role_arn == null && var.ecs_task_role_arn == null ? null : data.aws_iam_policy_document.scheduled_task_cw_event_role_pass_role_policy[0].json
   ]
+
+  dynamic "statement" {
+    for_each = var.event_target_ecs_target_enable_ecs_managed_tags || var.event_target_ecs_target_propagate_tags == "TASK_DEFINITION" ? [1] : []
+
+    content {
+      effect    = "Allow"
+      actions   = ["ecs:TagResource"]
+      resources = ["*"]
+
+      condition {
+        test     = "StringEquals"
+        variable = "ecs:CreateAction"
+        values   = ["RunTask"]
+      }
+    }
+  }
 }
 
 resource "aws_iam_role_policy" "scheduled_task_cw_event_role_cloudwatch_policy" {
