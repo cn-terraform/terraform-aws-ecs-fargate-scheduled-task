@@ -51,15 +51,15 @@ pre-commit run --all-files
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.7 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~>6 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.33.0 |
+| ---- | ------- |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~>6 |
 
 ## Modules
 
@@ -68,7 +68,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_cloudwatch_event_rule.event_rule](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_rule) | resource |
 | [aws_cloudwatch_event_target.ecs_scheduled_task](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_target) | resource |
 | [aws_iam_role.scheduled_task_cw_event_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
@@ -81,7 +81,7 @@ No modules.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_additional_tags"></a> [additional\_tags](#input\_additional\_tags) | (Optional) Additional tags to add to resources. These will be merged with the default tags added by the module. If configured with a provider default\_tags configuration block present, tags with matching keys will overwrite those defined at the provider-level. | `map(string)` | `{}` | no |
 | <a name="input_ecs_execution_task_role_arn"></a> [ecs\_execution\_task\_role\_arn](#input\_ecs\_execution\_task\_role\_arn) | (Optional) The task definition execution role. The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. | `string` | `null` | no |
 | <a name="input_ecs_task_role_arn"></a> [ecs\_task\_role\_arn](#input\_ecs\_task\_role\_arn) | (Optional) The task definition role. The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. | `string` | `null` | no |
@@ -118,7 +118,7 @@ No modules.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_aws_iam_role_policy_scheduled_task_cw_event_role_cloudwatch_policy_id"></a> [aws\_iam\_role\_policy\_scheduled\_task\_cw\_event\_role\_cloudwatch\_policy\_id](#output\_aws\_iam\_role\_policy\_scheduled\_task\_cw\_event\_role\_cloudwatch\_policy\_id) | The role policy ID, in the form of role\_name:role\_policy\_name. |
 | <a name="output_aws_iam_role_policy_scheduled_task_cw_event_role_cloudwatch_policy_name"></a> [aws\_iam\_role\_policy\_scheduled\_task\_cw\_event\_role\_cloudwatch\_policy\_name](#output\_aws\_iam\_role\_policy\_scheduled\_task\_cw\_event\_role\_cloudwatch\_policy\_name) | The name of the policy. |
 | <a name="output_aws_iam_role_policy_scheduled_task_cw_event_role_cloudwatch_policy_policy"></a> [aws\_iam\_role\_policy\_scheduled\_task\_cw\_event\_role\_cloudwatch\_policy\_policy](#output\_aws\_iam\_role\_policy\_scheduled\_task\_cw\_event\_role\_cloudwatch\_policy\_policy) | The policy document attached to the role. |
